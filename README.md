@@ -3,8 +3,8 @@ A dynamic event planning platform that helps users organize and manage various t
 Features ✨
 
 # Event Creation and Management
-Create events with custom names and types
-Schedule events with datetime picker
+  * Create events with custom names and types
+  * Schedule events with datetime picker
 Manage attendee lists
 Search and select venues
 Generate detailed itineraries
