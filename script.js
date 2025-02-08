@@ -240,6 +240,7 @@ function showToast(message) {
     const toast = document.createElement("div");
     toast.className = "toast show";
     toast.textContent = message;
+    toast.style.zIndex = 10;
     document.body.appendChild(toast);
     setTimeout(() => {
         toast.classList.remove("show");
