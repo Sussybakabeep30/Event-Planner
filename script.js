@@ -8,13 +8,12 @@ let eventState = {
     currentUser: null
 };
 
-// Event Listeners
 document.addEventListener('DOMContentLoaded', function () {
     const itineraryList = document.getElementById('itineraryList');
     itineraryList.innerHTML = '';
     eventState.currentUser = null;
 
-    // Add event listeners
+
     document.getElementById('addAttendeeBtn').addEventListener('click', addAttendee);
     document.getElementById('attendeeInput').addEventListener('keypress', e => {
         if (e.key === 'Enter') addAttendee();
@@ -39,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('a[href="#venueSearch"]').addEventListener('click', openLoginModal);
     document.querySelector('a[href="#attendees"]').addEventListener('click', openFaqModal);
 
-    // Add save progress listeners
     ['eventName', 'eventType', 'eventDateTime'].forEach(id => {
         document.getElementById(id).addEventListener(
             id === 'eventDateTime' ? 'change' : 'input', 
@@ -48,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Attendee Management
 function addAttendee() {
     const attendeeInput = document.getElementById('attendeeInput');
     const attendeeName = attendeeInput.value.trim();
@@ -83,7 +80,6 @@ function addAttendee() {
     saveProgress();
 }
 
-// Venue Management
 async function searchVenue() {
     const query = document.getElementById('venueSearchInput').value.trim();
     const venueList = document.getElementById('venueList');
@@ -135,7 +131,6 @@ function selectVenue(venueName) {
     saveProgress();
 }
 
-// Event Management
 function updateItinerary() {
     if (!eventState.currentUser) {
         alert('Please log in first to create events.');
@@ -202,7 +197,6 @@ function renderItinerary() {
     }
 }
 
-// User Management
 function loginUser() {
     const email = document.getElementById('username').value.trim();
     if (!email) {
@@ -236,8 +230,6 @@ function loginUser() {
     closeLoginModal();
     renderItinerary();
 }
-
-// Utility Functions
 function isEventDataComplete() {
     return eventState.attendees.length > 0 && 
            eventState.selectedVenue && 
@@ -282,7 +274,6 @@ function restoreUserProgress() {
     venueList.innerHTML = eventState.selectedVenue ? `<li>${eventState.selectedVenue}</li>` : '';
 }
 
-// Modal Functions
 function openLoginModal() {
     document.getElementById('loginModal').style.display = 'block';
 }
@@ -306,23 +297,17 @@ function toggleFaq(id) {
 
 
 
-// Add this to your existing script.js file
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Existing event listeners...
-
-    // Initialize slideshow
     let slides = document.querySelectorAll('.slide');
     let currentSlide = 0;
     
-    // Only needed if you want to control the slideshow manually
     function showSlide(n) {
         slides.forEach(slide => slide.classList.remove('active'));
         currentSlide = (n + slides.length) % slides.length;
         slides[currentSlide].classList.add('active');
     }
     
-    // Optional: Add manual controls
     function nextSlide() {
         showSlide(currentSlide + 1);
     }
@@ -331,7 +316,6 @@ document.addEventListener('DOMContentLoaded', function() {
         showSlide(currentSlide - 1);
     }
 
-    // Optional: Add keyboard controls
     document.addEventListener('keydown', function(e) {
         if (e.key === 'ArrowRight') nextSlide();
         if (e.key === 'ArrowLeft') previousSlide();
