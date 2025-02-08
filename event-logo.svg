@@ -1,0 +1,24 @@
+<svg width="100" height="100" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Gradient Definition with Lighter Blue -->
+    <defs>
+        <linearGradient id="calendarGradient" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#D1F6FB"/>  <!-- Lightened Blue -->
+            <stop offset="100%" stop-color="#A0E6FF"/>  <!-- Softer Blue -->
+        </linearGradient>
+    </defs>
+    
+    <!-- Calendar Base with Finer Lines -->
+    <rect x="3" y="5" width="18" height="16" rx="4" ry="4" fill="url(#calendarGradient)" stroke="black" stroke-width="1"/>
+    
+    <!-- Calendar Rings -->
+    <line x1="7" y1="2" x2="7" y2="6" stroke="black" stroke-width="1"/>
+    <line x1="17" y1="2" x2="17" y2="6" stroke="black" stroke-width="1"/>
+    
+    <!-- Calendar Grid -->
+    <line x1="3" y1="10" x2="21" y2="10" stroke="black" stroke-width="1"/>
+
+    <!-- Star Icon with Finer Lines -->
+    <polygon points="12,12 13,15 16,15 13.5,17 14.5,20 12,18 9.5,20 10.5,17 8,15 11,15" 
+             fill="gold" stroke="black" stroke-width="0.8"/>
+
+</svg>

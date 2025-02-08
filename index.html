@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="slideshow-container">
+        <div class="slide fade">
+            <img src="63ecdf6e6df724eab1f0e8ca_20230215T0132-25bece5c-5ab8-4c33-98c7-60ad2668054b.webp" alt="Conference Hall" />
+        </div>
+        <div class="slide fade">
+            <img src= "AdobeStock_175466970-scaled.jpeg"alt="Wedding Venue" />
+        </div>
+        <div class="slide fade">
+            <img src="EventManagement.jpg" alt="Birthday Party" />
+        </div>
+        <div class="slide fade">
+            <img src="image3-min-1.png" alt= "Corporate Event" />
+        </div>
+        <div class="slide fade">
+            <img src="birthdaypackage2.jpeg" alt= "Corporate Event" />
+        </div>
+        <div class="slide fade">
+            <img src="Ashley_Andre_Knotting_Hill_Place_Wedding_Venue_Little_Elm_Texas_2023-243.jpg" alt= "Corporate Event" />
+        </div>
+        <div class="slide fade">
+            <img src="photo-1d6e44a8-c23b-4424-913b-4058eef6d121.jpg" alt= "Corporate Event" />
+        </div>
+        
+
+        <div class="overlay"></div>
+    </div>
+    <header>
+        <div class="container">
+            <h1><img src="event-logo.svg" width="80" height="70" alt="Event Planning Logo"> Wanderlust Hub</h1>
+            <nav>
+                <ul>
+                    <li><a href="#venueSearch"><i class="fas fa-sign-in-alt"></i> Log In / Sign Up using email</a></li>
+                    <li><a href="#attendees"><i class="fas fa-question-circle"></i> Help & FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <div id="loginModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeLoginModal()">&times;</span>
+                <h2>Login / Sign-up</h2>
+                <input type="text" id="username" placeholder="Enter email id">
+                <button onclick="loginUser()">Login</button>
+            </div>
+        </div>
+        
+        <!-- Help & FAQ Modal -->
+        <div id="faqModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeFaqModal()">&times;</span>
+                <h2>Help & FAQ</h2>
+                <div class="faq-item">
+                    <h3 onclick="toggleFaq(1)">How do I create an event?</h3>
+                    <p id="faq1" class="faq-answer">To create an event, fill in the details and click 'Schedule Event'.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 onclick="toggleFaq(2)">How do I add attendees?</h3>
+                    <p id="faq2" class="faq-answer">Enter attendee names and click 'Add Attendee'.</p>
+                </div>
+                <div class="faq-item">
+                    <h4 onclick="toggleFaq(3)">For more info,write a mail <br> vanshikavishal3544@gmail.com</h4>
+    
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <section id="eventDetails" class="section full-width">
+                <h2><i class="fas fa-info-circle"></i> Event Details</h2>
+                <div class="input-group">
+                    <input type="text" id="eventName" placeholder="Enter event name">
+                    <select id="eventType" style="height: 40px;">
+                        <option value="">Select event type</option>
+                        <option value="Conference">Conference</option>
+                        <option value="Wedding">Wedding</option>
+                        <option value="Birthday">Birthday</option>
+                        <option value="Corporate">Corporate Event</option>
+                        <option value="Party">Party</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </section>
+
+            <section id="attendees" class="section">
+                <h2><i class="fas fa-users"></i> Attendees</h2>
+                <ul id="attendeeList"></ul>
+                <input type="text" id="attendeeInput" placeholder="Enter attendee name">
+                <button id="addAttendeeBtn"><i class="fas fa-user-plus"></i> Add Attendee</button>
+            </section>
+
+            <section id="venueSearch" class="section">
+                <h2><i class="fas fa-search-location"></i> Find a Venue</h2>
+                <input type="text" id="venueSearchInput" placeholder="Enter venue location">
+                <button id="searchVenueBtn"><i class="fas fa-search"></i> Search</button>
+                <ul id="venueList"></ul>
+            </section>
+
+            <section id="schedule" class="section">
+                <h2><i class="far fa-calendar-alt"></i> Schedule Event</h2>
+                <input type="datetime-local" id="eventDateTime">
+                <button id="createEventBtn"><i class="fas fa-calendar-plus"></i> Schedule Event</button>
+            </section>
+
+            <section id="itinerary" class="section full-width">
+                <h2><i class="fas fa-route"></i> Itinerary</h2>
+                <div id="itineraryList"></div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p><i class="far fa-copyright"></i> 2025 Wanderlust Hub</p>
+    </footer>
+    <script src="script.js"></script>
+    <script async defer src="https://apis.google.com/js/api.js"></script>
+</body>
+</html>
