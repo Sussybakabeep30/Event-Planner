@@ -1,6 +1,6 @@
 # Wanderlust Hub 🌟
 A dynamic event planning platform that helps users organize and manage various types of events, from conferences to weddings. The application features a modern, responsive design with an elegant slideshow background and intuitive user interface.
-Features ✨
+
 
 # Event Creation and Management
   * Create events with custom names and types
