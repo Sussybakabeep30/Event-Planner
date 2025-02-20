@@ -27,15 +27,24 @@ body {
 }
 
 header {
-    background: linear-gradient(to right, rgb(209, 246, 251), #0ea5e9);
-    box-shadow: 0 2px 8px var(--shadow);
+    background: linear-gradient(
+        to right, 
+        rgba(209, 246, 251, 0.85), 
+        rgba(14, 165, 233, 0.85)
+    );
+    backdrop-filter: blur(6px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 10px 0;
 }
 
 header .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 35px;
+    min-height: 35px;
+    flex-wrap: nowrap;
 
 }
 
@@ -43,12 +52,20 @@ header h1 {
     color: black;
     font-size: 1.75rem;
     font-weight: 600;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    white-space: nowrap; /* Prevent text wrapping */
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 nav ul {
     display: flex;
     gap: 32px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 nav a {
@@ -171,20 +188,28 @@ footer{
 }
 
 @media (max-width: 768px) {
-    main .container {
-        grid-template-areas:
-            "attendees"
-            "venues"
-            "schedule"
-            "rightside"
-            "offers";
-        grid-template-columns: 1fr;
+    header .container {
+        flex-direction: row; /* Keep horizontal layout */
+        gap: 20px;
+        padding: 0 15px;
     }
-    
+
     nav ul {
-        gap: 16px;
+        flex-direction: row; /* Keep horizontal layout */
+        gap: 15px;
+    }
+
+    header h1 {
+        font-size: 1.4rem; /* Slightly reduce font size */
+    }
+
+    header h1 img {
+        width: 60px; /* Reduce logo size */
+        height: 52px;
     }
 }
+
+/* Base styles remain the same until media queries */
 
 @media (max-width: 1200px) {
     main .container {
@@ -210,7 +235,7 @@ footer{
     }
 
     input[type="text"] {
-        width: 100%;
+        width: 90%;
     }
 
     nav ul {
@@ -263,8 +288,22 @@ footer{
     .section h2 {
         font-size: 1.1rem;
     }
+    header .container {
+        justify-content: center;
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 0.8rem;
+  }
+
+    header h1 img {
+        width: 40px;
+        height: 35px;
+    }
 }
 
+/* Base animations keyframes */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -310,6 +349,7 @@ footer{
     }
 }
 
+/* Apply animations to existing elements */
 .section {
     animation: scaleIn 0.3s ease-out;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -323,8 +363,8 @@ footer{
 header h1 {
     animation: slideIn 0.5s ease-out;
     display: flex;
-    align-items: center; 
-    gap: 10px; 
+    align-items: center; /* Aligns text and image vertically */
+    gap: 10px; /* Adds space between the image and text */
 }
 
 nav a {
@@ -367,14 +407,17 @@ input[type="text"]:focus {
     transform: scale(1.01);
 }
 
+/* Add loading state animation */
 .loading {
     animation: borderPulse 1.5s infinite;
 }
 
+/* Add new items animation */
 .new-item {
     animation: fadeIn 0.4s ease-out;
 }
 
+/* Optional: Reduce animations for users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;
@@ -384,10 +427,12 @@ input[type="text"]:focus {
     }
 }
 
+/* Add spacing between icons and text */
 i {
     margin-right: 8px;
 }
 
+/* Optional: Add icon hover effect */
 a:hover i {
     transform: scale(1.1);
     transition: transform 0.2s ease;
@@ -425,7 +470,7 @@ ul {
 
 
 input[type="datetime-local"] {
-    width: 80%;
+    width: 90%;
     padding: 8px;
     border: 1px solid var(--border);
     border-radius: 8px;
@@ -436,15 +481,19 @@ input[type="datetime-local"] {
     font-family: 'Poppins', sans-serif; 
    
 }
+/* Add these styles to your existing CSS file */
 
+/* Make venue list scrollable */
 #venueList {
-    max-height: 300px; 
+    max-height: 300px; /* Adjust this value as needed */
     overflow-y: auto;
     margin-top: 16px;
+    /* Add custom scrollbar styling */
     scrollbar-width: thin;
     scrollbar-color: var(--secondary) var(--background);
 }
 
+/* Custom scrollbar styling for Webkit browsers (Chrome, Safari, etc.) */
 #venueList::-webkit-scrollbar {
     width: 8px;
 }
@@ -462,6 +511,10 @@ input[type="datetime-local"] {
 #venueList::-webkit-scrollbar-thumb:hover {
     background: var(--primary);
 }
+
+/* Venue section container styling */
+
+/* Add these styles to your existing CSS file */
 
 .full-width {
     grid-column: 1 / -1 !important;
@@ -493,6 +546,8 @@ select {
     background-color: white;
     cursor: pointer;
 }
+
+/* Update container grid areas */
 main .container {
     grid-template-areas:
         "details details details"
@@ -512,6 +567,7 @@ main .container {
     z-index: 10;
     background: transparent;
 }
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .input-group {
         flex-direction: column;
@@ -527,14 +583,16 @@ main .container {
     }
 }
 
+/* Venue list container */
 #venueList {
     position: relative;
-    max-height: 300px; 
+    max-height: 300px; /* Adjust this height as needed */
     overflow-y: auto;
-    padding-right: 10px; 
+    padding-right: 10px; /* Add slight padding for scrollbar */
     border-radius: 8px;
 }
 
+/* Venue list items */
 #venueList li {
     margin-bottom: 8px;
     border-radius: 8px;
@@ -545,6 +603,7 @@ main .container {
     margin-bottom: 0;
 }
 
+/* Webkit scrollbar styling (Chrome, Safari, Edge) */
 #venueList::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -554,11 +613,13 @@ main .container {
     border-radius: 3px;
 }
 
+/* Firefox scrollbar styling */
 #venueList {
     scrollbar-width: thin;
     scrollbar-color: var(--secondary) var(--background);
 }
 
+/* Ensure proper spacing for venue items */
 #venueList li {
     padding: 12px;
     display: flex;
@@ -572,6 +633,7 @@ main .container {
     flex-shrink: 0;
 }
 
+/* Add fade effect at the bottom when scrollable */
 #venueSearch::after {
     content: '';
     position: absolute;
@@ -640,6 +702,22 @@ input[type="datetime-local"]:focus {
         right: 10px;
         font-size: 14px;
     }
+    nav ul {
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 0.9rem; /* Reduce font size */
+    }
+
+    header h1 {
+        font-size: 1.2rem;
+    }
+
+    header h1 img {
+        width: 50px;
+        height: 43px;
+    }
 }
 
 .modal {
@@ -671,7 +749,7 @@ input[type="datetime-local"]:focus {
 }
 
 .modal input {
-    width: 100%;
+    width: 90%;
     margin: 10px 0;
     padding: 8px;
     border: 1px solid #ccc;
@@ -696,7 +774,7 @@ input[type="datetime-local"]:focus {
     width: 100%;
     height: 100%;
     opacity: 0;
-    transition: opacity 1.5s ease-in-out; 
+    transition: opacity 1.5s ease-in-out; /* Increased from 1s to 1.5s for smoother transitions */
 }
 
 .slide.active {
@@ -715,13 +793,13 @@ input[type="datetime-local"]:focus {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.65); 
-    backdrop-filter: blur(0.5px); 
+    background: rgba(255, 255, 255, 0.65); /* Reduced opacity from 0.85 to 0.65 */
+    backdrop-filter: blur(0.5px); /* Reduced blur from 5px to 3px */
 }
 
 .section {
-    background: rgba(255, 255, 255, 0.85); 
-    backdrop-filter: blur(6px);
+    background: rgba(255, 255, 255, 0.85); /* Reduced opacity from 0.9 to 0.85 */
+    backdrop-filter: blur(6px); /* Reduced blur from 8px to 6px */
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -731,10 +809,11 @@ header {
         to right, 
         rgba(209, 246, 251, 0.85), 
         rgba(14, 165, 233, 0.85)
-    ); 
+    ); /* Reduced opacity from 0.95 to 0.85 */
     backdrop-filter: blur(6px);
 }
 
+/* Animation for slides */
 @keyframes fadeAnimation {
     0% { opacity: 0; }
     20% { opacity: 1; }
@@ -744,7 +823,7 @@ header {
 }
 
 .fade {
-    animation: fadeAnimation 42s linear infinite; 
+    animation: fadeAnimation 42s linear infinite; /* 6s per slide for 7 slides */
 }
 
 .slide:nth-child(1) { animation-delay: 0s; }
@@ -755,11 +834,13 @@ header {
 .slide:nth-child(6) { animation-delay: 30s; }
 .slide:nth-child(7) { animation-delay: 36s; }
 
+/* Update container background for better readability */
 .container {
     position: relative;
     z-index: 5;
 }
 
+/* Optional: Add some depth to the sections */
 .section {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
